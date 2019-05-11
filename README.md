@@ -1,0 +1,1 @@
+Disclaimer: I am still very much a junior developer, so my ideas of what steps to do for creating repositores and all the useful git commands might not line up with reality, so take it with a grain of salt.
