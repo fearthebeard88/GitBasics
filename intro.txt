@@ -1,0 +1,48 @@
+Basic commands to create a local repository:
+  1. To create a local repo
+    a. navigate to where you want this repo to live on your machine
+    b. use the command git init
+    c. assuming the previous command was successful you should now see (master) next to your computer name and current location in your file structure, and you now have a local git repository on your computer.
+  2. To register changes in your local repository
+    a. in your favorite code editor (sublime, visual studio code, visual studio, notepad, etc...) make some changes to a file, save them.
+    b. run the command git add <changed file>
+      1. this command is "staging" changes with git, this means that git is creating a snapshot of your code with your changes
+    c. run the command git commit -m "<commit message>"
+      1. this command is creating a new pointer and pointing it to your staged snapshot
+
+Basic commands to create a remote repository with github.com
+  1. Follow steps to create a local repository
+  2. After you commit you will need to register a new remote
+    a. a remote is basically a server that will hold your code on it's file structure, so if your computer dies you will still be able to retrieve it from the remote server
+    b. run command git remote add origin git@github.com:<username>/<repository>.git
+      1. before you run this command you will need to create the repository at the remote location (github.com for this example), it is really easy to do this through github.com's website interface so I will not go through how to do that here
+        a. Option to do this through terminal: curl -u 'USERNAME:PASSWORD' https://api.github.com/user/repos '{"name":"NAME"}'
+	  1. replace all capitalized words with your information (USERNAME, PASSWORD, NAME)
+  3. run this command git push -u origin master
+    a. this command is telling git to send the code snippet to the remote server and update the branch master with the new snapshot
+
+Basic commands for git
+  1. git status
+    a. gives you the status of your local repository (staged files, where your local branch is in relation to the remote branch, stuff like that)
+  2. git stash
+    a. creates a snapshot of your code and points your branch to the previous commit, this way you can backtrack to a clean working branch without permanently losing your code changes that might not be ready to be commited yet
+    b. to reapply the changes use git stash apply
+  3. git rm <file>
+    a. removes file from local repository and disk (your machine)
+    b. to just remove from repository but keep on disk add --cache option (git rm <file> --cache)
+  4. git checkout <file>
+    a. this will revert the file to its last snapshot
+  5. git reset HEAD <file>
+    a. this will remove file from the stage, but retain the changes
+  6. git checkout -b <branch>
+    a. this will create a new branch and switch to it
+  7. git checkout <branch>
+    a. this will change to the specified branch
+  8. git reflog
+    a. this will show you your git history
+  9. git ls-files
+    a. this will show you a list of currently staged files (files git is tracking)
+  10. git reset HEAD~1
+    a. removes the last commit (from local), you can go back more than one commit by changing the digit after HEAD~<digit>, this can and probably will mess with your repositories commit history
+  11. git revert HEAD
+    a. this will add another commit that is the opposite of the latest commit therefore preserving commit history
